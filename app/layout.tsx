@@ -98,7 +98,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
             <UserProvider userPromise={userPromise}>
               <SiteHeader />
-              <main className='px-4 md:px-6'>{children}</main>
+              <main>{children}</main>
             </UserProvider>
           </ThemeProvider>
         </Web3Provider>
