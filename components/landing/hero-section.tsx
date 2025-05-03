@@ -62,7 +62,7 @@ export default function HeroSection() {
     <section
       id='hero'
       onMouseMove={handleMouseMove}
-      className='relative isolate overflow-hidden -mt-16 flex min-h-[90dvh] flex-col justify-center px-4 pt-40 text-center sm:px-6'
+      className='relative isolate overflow-hidden -mt-16 flex min-h-[90dvh] flex-col justify-center px-4 pt-40 pb-32 text-center sm:px-6 lg:px-0'
     >
       <GradientBackdrop />
       <Particles points={particles} />
