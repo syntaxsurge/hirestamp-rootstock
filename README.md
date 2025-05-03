@@ -2,7 +2,7 @@
 
 _Verifiable Credentials, deterministic DIDs and on-chain subscription billing secured by Bitcoin’s hash-power through the Rootstock side-chain._
 
-[![HireStamp Home Page](public/images/homepage.png)](https://youtu.be/f11PnUgLKno)
+[![HireStamp Demo](public/images/hirestamp-demo.png)](https://youtu.be/f11PnUgLKno)
 
 ---
 
