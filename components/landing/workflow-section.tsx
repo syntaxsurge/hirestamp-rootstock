@@ -1,52 +1,41 @@
 'use client'
 
+import { motion } from 'framer-motion'
+import { CheckCircle } from 'lucide-react'
+
 const steps = [
-  {
-    title: 'Create Account',
-    detail: 'Sign up and spin-up your team workspace.',
-  },
-  {
-    title: 'Add Credentials',
-    detail: 'Upload diplomas, certificates and references to your vault.',
-  },
-  {
-    title: 'Request Verification',
-    detail: 'Choose a listed issuer to cryptographically sign each credential.',
-  },
-  {
-    title: 'Prove Skills',
-    detail: 'Pass AI-graded quizzes to mint SkillPass verifiable credentials.',
-  },
-  {
-    title: 'Get Discovered',
-    detail: 'Recruiters filter the talent pool by verified proofs and scores.',
-  },
+  'Create account & workspace',
+  'Mint did:rsk identity',
+  'Upload & verify credentials',
+  'Pass AI skill quizzes',
+  'Get discovered by recruiters',
 ]
 
 export default function WorkflowSection() {
   return (
-    <section id='workflow' className='bg-background py-24'>
-      <div className='mx-auto max-w-6xl px-4'>
+    <section id='workflow' className='bg-background py-28'>
+      <div className='mx-auto max-w-4xl px-4'>
         <h2 className='text-center text-3xl font-extrabold tracking-tight sm:text-4xl'>
-          How HireStamp Works
+          Journey&nbsp;to&nbsp;Proof
         </h2>
 
-        {/* Responsive layout: stacked on mobile, horizontal on md+ */}
-        <div className='mt-16 grid gap-12 md:grid-cols-5'>
-          {steps.map((step, idx) => (
-            <div key={step.title} className='relative flex flex-col items-center text-center'>
-              <div className='bg-hirestamp-gradient flex size-12 items-center justify-center rounded-full text-lg font-bold text-white shadow-lg'>
-                {idx + 1}
-              </div>
-              <h3 className='text-foreground mt-4 text-lg font-semibold'>{step.title}</h3>
-              <p className='text-muted-foreground mt-2 text-sm leading-relaxed'>{step.detail}</p>
-              {/* Connector line (md+) */}
-              {idx < steps.length - 1 && (
-                <span className='bg-border absolute top-6 right-[-50%] hidden h-px w-[100%] md:block' />
-              )}
-            </div>
+        <ol className='relative mt-16 space-y-12 border-l-2 border-primary/30 pl-6'>
+          {steps.map((s, i) => (
+            <motion.li
+              key={s}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.04 }}
+              className='relative'
+            >
+              <span className='bg-background absolute -left-3.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-primary text-primary shadow-sm'>
+                <CheckCircle className='h-4 w-4' />
+              </span>
+              <h3 className='text-lg font-semibold'>{s}</h3>
+            </motion.li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   )

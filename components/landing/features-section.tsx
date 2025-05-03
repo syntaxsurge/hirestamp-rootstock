@@ -1,58 +1,59 @@
 'use client'
 
-import { TrendingUp, Shuffle, ShieldCheck, BookOpen } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { CheckCircle2, Repeat, Wallet, ShieldCheck } from 'lucide-react'
 
 const features = [
   {
-    icon: TrendingUp,
-    title: 'Native Token Billing',
-    description:
-      'Subscriptions are priced and paid directly in RBTC, Rootstock’s native currency.',
+    icon: Wallet,
+    title: 'Native RBTC Payments',
+    description: 'Pay and settle subscriptions in Rootstock’s native asset—no bridges.',
   },
   {
     icon: ShieldCheck,
-    title: 'On-Chain Verifications',
-    description:
-      'Every credential hash is anchored on-chain and viewable on the Rootstock Explorer.',
+    title: 'Untamperable Anchors',
+    description: 'Credential hashes live on-chain forever under Bitcoin’s security budget.',
   },
   {
-    icon: Shuffle,
-    title: 'Randomised Quizzes',
-    description:
-      'Secure server-side randomness seeds each quiz attempt ensuring fair, non-predictable assessment for candidates.',
+    icon: Repeat,
+    title: 'Auto-Rotating DIDs',
+    description: 'Deterministic identity that rotates keys while preserving trust graphs.',
   },
   {
-    icon: BookOpen,
-    title: 'Open Standards',
-    description: 'Verifiable Credentials, ERC-721 tokens and did:rsk identifiers by default.',
+    icon: CheckCircle2,
+    title: 'SLA-Backed Proofs',
+    description: 'Verifications carry JSON-LD signatures plus time-bound SLAs for issuers.',
   },
 ]
 
 export default function FeaturesSection() {
   return (
-    <section id='features' className='bg-muted/50 py-20'>
+    <section id='features' className='bg-background py-24'>
       <div className='mx-auto max-w-6xl px-4 text-center'>
         <h2 className='text-foreground text-3xl font-extrabold tracking-tight sm:text-4xl'>
-          Key Features
+          Built&nbsp;Different
         </h2>
 
-        <div className='mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4'>
-          {features.map(({ icon: Icon, title, description }) => (
-            <div
+        <div className='mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4'>
+          {features.map(({ icon: Icon, title, description }, i) => (
+            <motion.div
               key={title}
-              className='group border-border/60 bg-background/70 relative flex flex-col items-center overflow-hidden rounded-2xl border p-8 backdrop-blur transition-transform hover:-translate-y-1 hover:shadow-2xl'
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              whileHover={{ y: -6 }}
+              className='group relative overflow-hidden rounded-2xl border border-border/60 bg-background/70 p-8 backdrop-blur'
             >
-              <div className='bg-hirestamp-gradient mb-4 inline-flex size-12 items-center justify-center rounded-full text-white shadow-lg'>
-                <Icon className='h-6 w-6' />
+              <div className='bg-hirestamp-gradient absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-15' />
+              <div className='relative z-10 flex flex-col items-center'>
+                <div className='bg-hirestamp-gradient mb-4 inline-flex size-12 items-center justify-center rounded-full text-white shadow-lg'>
+                  <Icon className='h-6 w-6' />
+                </div>
+                <h3 className='text-foreground text-lg font-semibold'>{title}</h3>
+                <p className='text-muted-foreground mt-2 text-sm leading-relaxed'>{description}</p>
               </div>
-
-              <h3 className='text-foreground text-lg font-semibold'>{title}</h3>
-              <p className='text-muted-foreground mt-2 text-sm leading-relaxed'>{description}</p>
-
-              <div className='pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-15'>
-                <div className='bg-hirestamp-gradient absolute inset-0 blur-3xl' />
-              </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,32 +1,24 @@
 'use client'
 
 import Link from 'next/link'
-
 import { motion } from 'framer-motion'
 
 import { Button } from '@/components/ui/button'
 
-/**
- * Call-to-action section — now with an animated brand gradient backdrop,
- * radial glow, subtle grid overlay and motion-driven entrance transitions.
- */
 export default function CTASection() {
   return (
-    <section id='cta' className='relative isolate -mx-4 overflow-hidden md:-mx-6'>
-      <GradientBackdrop />
+    <section id='cta' className='relative isolate overflow-hidden py-32 -mx-4 md:-mx-6'>
+      <Backdrop />
 
-      <div className='mx-auto max-w-5xl px-4 py-24 text-center sm:py-32'>
+      <div className='mx-auto max-w-4xl px-4 text-center'>
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className='text-3xl font-extrabold tracking-tight text-balance text-white sm:text-4xl md:text-5xl lg:text-6xl'
+          className='text-balance bg-gradient-to-r from-white via-neutral-200 to-white bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl md:text-6xl'
         >
-          <span className='text-hirestamp-gradient animate-hirestamp-gradient'>
-            Rootstock-Native Trust{' '}
-          </span>
-          For Every Hire
+          Bring&nbsp;Verifiable&nbsp;Trust&nbsp;to&nbsp;Hiring&nbsp;Today
         </motion.h2>
 
         <motion.p
@@ -34,10 +26,10 @@ export default function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
-          className='mx-auto mt-6 max-w-2xl text-lg/relaxed text-white/90'
+          className='mx-auto mt-6 max-w-xl text-lg/relaxed text-white/90'
         >
-          Spin up a workspace, mint your did:rsk and start issuing verifiable credentials in
-          minutes&nbsp;— no crypto experience required.
+          Launch your workspace, mint a did:rsk and start issuing proofs in minutes—no solidity
+          knowledge required.
         </motion.p>
 
         <motion.div
@@ -45,14 +37,14 @@ export default function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-          className='mt-12 flex justify-center'
+          className='mt-12'
         >
           <Button
             asChild
             size='lg'
             className='relative isolate overflow-hidden rounded-full bg-white/10 px-8 py-3 font-semibold text-white shadow-xl transition-transform duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-2xl focus-visible:outline-none'
           >
-            <Link href='/connect-wallet'>Get Started</Link>
+            <Link href='/connect-wallet'>Get&nbsp;Started</Link>
           </Button>
         </motion.div>
       </div>
@@ -61,23 +53,27 @@ export default function CTASection() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                         B A C K G R O U N D  L A Y E R S                    */
+/*                                  BACKDROP                                  */
 /* -------------------------------------------------------------------------- */
 
-function GradientBackdrop() {
+function Backdrop() {
   return (
-    <div className='pointer-events-none absolute inset-0 -z-10 overflow-hidden'>
-      {/* Animated brand gradient */}
-      <div className='bg-hirestamp-gradient animate-hirestamp-gradient absolute inset-0 opacity-70' />
+    <div className='pointer-events-none absolute inset-0 -z-10'>
+      {/* Gradient waves */}
+      <div className='bg-hirestamp-gradient absolute -inset-20 animate-slow-pan opacity-60 blur-3xl' />
+      {/* Grid overlay */}
+      <div className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:64px_64px] opacity-10' />
 
-      {/* Radial glow for depth */}
-      <div className='absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.25)_0%,transparent_70%)]' />
-
-      {/* Subtle grid overlay */}
-      <div className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:60px_60px] opacity-20' />
-
-      {/* Dark layer for text contrast */}
-      <div className='absolute inset-0 bg-black/40 mix-blend-multiply' />
+      <style jsx global>{`
+        @keyframes slow-pan {
+          0% {
+            transform: translate3d(0%, 0%, 0) rotate(0deg);
+          }
+          100% {
+            transform: translate3d(-20%, -10%, 0) rotate(-4deg);
+          }
+        }
+      `}</style>
     </div>
   )
 }
