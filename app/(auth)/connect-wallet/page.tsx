@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { Wallet } from 'lucide-react'
-import { useAccount } from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 
 /**
  * Connect Wallet — prompts visitors to connect a wallet before using the app.
@@ -17,6 +17,8 @@ import { useAccount } from 'wagmi'
  */
 export default function ConnectWalletPage() {
   const { isConnected, address } = useAccount()
+  const { chain } = useNetwork()
+  const correctNetwork = chain?.id === 30 || chain?.id === 31
   const [checking, setChecking] = useState(false)
 
   /* Once connected, ask the backend to set/confirm the session cookie; only
@@ -25,7 +27,7 @@ export default function ConnectWalletPage() {
     let cancelled = false
 
     async function ensureSessionAndRedirect() {
-      if (!isConnected || !address) return
+      if (!isConnected || !correctNetwork || !address) return
       setChecking(true)
 
       try {
@@ -53,7 +55,7 @@ export default function ConnectWalletPage() {
     return () => {
       cancelled = true
     }
-  }, [isConnected, address])
+  }, [isConnected, correctNetwork, address])
 
   return (
     <section className='mx-auto flex min-h-[calc(100dvh-64px)] max-w-md flex-col items-center justify-center gap-6 px-4 text-center'>

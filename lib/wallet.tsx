@@ -7,7 +7,7 @@ import { getDefaultConfig, RainbowKitProvider, darkTheme, lightTheme } from '@ra
 import '@rainbow-me/rainbowkit/styles.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useTheme } from 'next-themes'
-import { WagmiProvider, http, useAccount } from 'wagmi'
+import { WagmiProvider, http, useAccount, useNetwork } from 'wagmi'
 
 import { WALLETCONNECT_PROJECT_ID } from './config'
 
@@ -60,10 +60,12 @@ const queryClient = new QueryClient()
 
 function WalletConnectionListener() {
   const { isConnected, address } = useAccount()
+  const { chain } = useNetwork()
+  const correctNetwork = chain?.id === rootstockMain.id || chain?.id === rootstockTest.id
   const router = useRouter()
   const pathname = usePathname()
 
-  const prevConnected = useRef(isConnected)
+  const prevConnected = useRef(isConnected && correctNetwork)
 
   const sessionFlagKey = address ? `hs_session_${address}` : undefined
   const sessionAlreadyEnsured = () =>
@@ -81,9 +83,11 @@ function WalletConnectionListener() {
     }
   }
 
-  /* Disconnect → clear session & redirect */
+  /* Disconnect or wrong network → clear session & redirect */
   useEffect(() => {
-    if (prevConnected.current && !isConnected) {
+    const connectedAndCorrect = isConnected && correctNetwork
+
+    if ((prevConnected.current && !connectedAndCorrect) || (isConnected && !correctNetwork)) {
       ;(async () => {
         try {
           await fetch('/api/auth/signout', { method: 'POST', credentials: 'include' })
@@ -95,12 +99,13 @@ function WalletConnectionListener() {
         }
       })()
     }
-    prevConnected.current = isConnected
-  }, [isConnected])
+
+    prevConnected.current = connectedAndCorrect
+  }, [isConnected, correctNetwork])
 
   /* First connect → ensure backend session */
   useEffect(() => {
-    if (!isConnected || !address || sessionAlreadyEnsured()) return
+    if (!isConnected || !correctNetwork || !address || sessionAlreadyEnsured()) return
     ;(async () => {
       try {
         const res = await fetch(`/api/auth/wallet-status?address=${address}`, {
@@ -122,7 +127,7 @@ function WalletConnectionListener() {
         /* ignore */
       }
     })()
-  }, [isConnected, address])
+  }, [isConnected, correctNetwork, address])
 
   return null
 }
