@@ -1,71 +1,93 @@
 'use client'
 
-import { TrendingUp, ShieldCheck, Shuffle, KeyRound } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { CircuitBoard, Database, Globe2, Zap } from 'lucide-react'
 
-import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 
-const items = [
+/* -------------------------------------------------------------------------- */
+/*                               F E A T U R E S                              */
+/* -------------------------------------------------------------------------- */
+
+const FEATURES = [
   {
-    icon: TrendingUp,
-    title: 'Native Token Billing',
-    text: 'All pricing and billing flows use RBTC directly, eliminating conversion overhead.',
+    icon: CircuitBoard,
+    title: 'Smart-Layer Native',
+    text: 'Every credential call runs directly on Rootstock’s EVM—no bridges, no wrappers.',
   },
   {
-    icon: ShieldCheck,
-    title: 'Secure Data Connector',
-    text: 'External proofs are replayed on-chain through Rootstock connectors, anchoring web2 attestations immutably.',
+    icon: Database,
+    title: 'Immutable Anchors',
+    text: 'Credential hashes are persisted forever in RBTC-backed storage slots.',
   },
   {
-    icon: Shuffle,
-    title: 'Randomised Quizzes',
-    text: 'Skill-check quizzes use secure server-side randomness so no two candidates see the same order.',
+    icon: Globe2,
+    title: 'Globally Verifiable',
+    text: 'Open W3C standards guarantee wallet-agnostic proofs across any marketplace.',
   },
   {
-    icon: KeyRound,
-    title: 'Deterministic DIDs',
-    text: 'Every workspace mints a did:rsk identifier via the on-chain DIDRegistry for universal, unfakeable identity.',
+    icon: Zap,
+    title: 'Real-Time Feeds',
+    text: 'On-chain events stream to the UI via SSE for instant status updates.',
   },
-]
+] as const
+
+/* -------------------------------------------------------------------------- */
+/*                               C O M P O N E N T                            */
+/* -------------------------------------------------------------------------- */
 
 export default function OverviewSection() {
   return (
-    <section id='overview' className='bg-background py-24'>
+    <section
+      id='overview'
+      className='relative isolate overflow-hidden bg-background py-32'
+      aria-label='Rootstock technical pillars'
+    >
+      {/* diffused radial backdrop */}
+      <div className='pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(0,143,120,0.15)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_top,rgba(0,143,120,0.07)_0%,transparent_70%)]' />
+
       <div className='mx-auto max-w-6xl px-4'>
-        <header className='mb-14 text-center'>
-          <h2 className='text-foreground text-3xl font-extrabold tracking-tight sm:text-4xl'>
-            Powered by Rootstock Protocols
+        {/* Heading */}
+        <header className='mb-20 text-center'>
+          <h2 className='text-balance text-foreground text-3xl font-extrabold tracking-tight sm:text-4xl'>
+            Built for Provable&nbsp;Trust
           </h2>
-          <p className='text-muted-foreground mx-auto mt-4 max-w-2xl'>
-            HireStamp weaves every Rootstock data primitive — connectors and RNG —
-            straight into the hiring flow so proofs are live, verifiable and tamper-proof.
+          <p className='text-muted-foreground mx-auto mt-4 max-w-2xl text-lg/relaxed'>
+            HireStamp fuses every Rootstock primitive into the credential flow—so integrity is not
+            an add-on, it’s the default.
           </p>
         </header>
 
-        <div className='grid gap-8 md:grid-cols-2'>
-          {items.map(({ icon: Icon, title, text }) => (
-            <Card
+        {/* Feature grid */}
+        <ul className='grid gap-10 md:grid-cols-2'>
+          {FEATURES.map(({ icon: Icon, title, text }, i) => (
+            <motion.li
               key={title}
-              className='group bg-background/70 relative flex overflow-hidden rounded-3xl backdrop-blur transition-shadow hover:shadow-xl'
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.05, ease: 'easeOut' }}
+              className='group/card'
             >
-              <span className='bg-hirestamp-gradient absolute top-0 left-0 h-full w-1.5 rounded-tr-lg rounded-br-lg' />
+              {/* glowing border wrapper */}
+              <div className='bg-gradient-to-br from-primary/40 to-secondary/40 rounded-3xl p-[1px] group-hover/card:shadow-xl transition-shadow'>
+                <Card className='border-border/60 bg-background/80 rounded-[inherit] backdrop-blur'>
+                  <CardHeader className='flex flex-row items-center gap-4 p-8'>
+                    <div className='flex size-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-inner'>
+                      <Icon className='h-7 w-7' />
+                    </div>
+                    <CardTitle className='text-lg font-semibold'>{title}</CardTitle>
+                  </CardHeader>
 
-              <CardHeader className='flex flex-row items-center gap-4 pl-8'>
-                <div className='flex size-12 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-orange-600 shadow-inner dark:bg-orange-900/40 dark:text-orange-300'>
-                  <Icon className='h-6 w-6' />
-                </div>
-                <CardTitle className='text-lg font-semibold'>{title}</CardTitle>
-              </CardHeader>
-
-              <CardContent className='-mt-4 pr-6 pb-6 pl-8'>
-                <p className='text-muted-foreground text-sm leading-relaxed'>{text}</p>
-              </CardContent>
-
-              <div className='pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-10'>
-                <div className='bg-hirestamp-gradient h-full w-full blur-3xl' />
+                  <CardContent className='-mt-4 pb-8 pl-[4.5rem] pr-8'>
+                    <p className='text-muted-foreground text-sm leading-relaxed'>{text}</p>
+                  </CardContent>
+                </Card>
               </div>
-            </Card>
+            </motion.li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )
