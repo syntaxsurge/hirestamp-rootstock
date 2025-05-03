@@ -96,7 +96,7 @@ _Verifiable Credentials, deterministic DIDs and on-chain subscription billing se
 
 ### How AI Tools Were Used
 
-FlareCred integrates OpenAI GPT-4o in three independent workflows:
+HireStamp integrates OpenAI GPT-4o in three independent workflows:
 
 | Feature                                                                                                              | File(s) / Entry Point                                                                                                                                       | Model Interaction                                                              | Guard-rails & Caching                                                                                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
