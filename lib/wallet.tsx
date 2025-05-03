@@ -140,8 +140,8 @@ function RainbowKitWithTheme({ children }: { children: ReactNode }) {
   const { resolvedTheme } = useTheme()
   const rkTheme =
     resolvedTheme === 'dark'
-      ? darkTheme({ accentColor: '#f7931a' })
-      : lightTheme({ accentColor: '#f7931a' })
+      ? darkTheme({ accentColor: '#00e5c4', accentColorForeground: '#ffffff' })
+      : lightTheme({ accentColor: '#00e5c4', accentColorForeground: '#ffffff' })
 
   return (
     <RainbowKitProvider theme={rkTheme}>
