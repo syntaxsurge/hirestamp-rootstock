@@ -5,9 +5,9 @@ import { TrendingUp, Shuffle, ShieldCheck, BookOpen } from 'lucide-react'
 const features = [
   {
     icon: TrendingUp,
-    title: 'Oracle-Priced Billing',
+    title: 'Native Token Billing',
     description:
-      'Subscriptions are priced in RBTC but converted to USD on the fly using live on-chain price feeds.',
+      'Subscriptions are priced and paid directly in RBTC, Rootstock’s native currency.',
   },
   {
     icon: ShieldCheck,

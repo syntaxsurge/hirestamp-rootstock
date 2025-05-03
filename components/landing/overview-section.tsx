@@ -7,8 +7,8 @@ import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
 const items = [
   {
     icon: TrendingUp,
-    title: 'Live Price Oracle',
-    text: 'All pricing and billing flows source real-time RBTC/USD rates directly from the Rootstock oracle network.',
+    title: 'Native Token Billing',
+    text: 'All pricing and billing flows use RBTC directly, eliminating conversion overhead.',
   },
   {
     icon: ShieldCheck,
@@ -36,7 +36,7 @@ export default function OverviewSection() {
             Powered by Rootstock Protocols
           </h2>
           <p className='text-muted-foreground mx-auto mt-4 max-w-2xl'>
-            HireStamp weaves every Rootstock data primitive — oracle feeds, connectors and RNG —
+            HireStamp weaves every Rootstock data primitive — connectors and RNG —
             straight into the hiring flow so proofs are live, verifiable and tamper-proof.
           </p>
         </header>

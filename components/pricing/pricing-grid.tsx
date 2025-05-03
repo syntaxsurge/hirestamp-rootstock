@@ -9,7 +9,6 @@ import { Check } from 'lucide-react'
 import { SubmitButton } from '@/app/(dashboard)/pricing/submit-button'
 import { Button } from '@/components/ui/button'
 import { RBTC_DECIMALS } from '@/lib/constants/pricing'
-import { useRbtcUsdPrice } from '@/lib/hooks/use-rbtc-usd-price'
 import type { PricingGridProps } from '@/lib/types/ui'
 
 /* -------------------------------------------------------------------------- */
@@ -17,42 +16,30 @@ import type { PricingGridProps } from '@/lib/types/ui'
 /* -------------------------------------------------------------------------- */
 
 export function PricingGrid({ currentPlanName, planMeta }: PricingGridProps) {
-  const { usd, stale } = useRbtcUsdPrice()
-
   const current = currentPlanName?.toLowerCase() ?? null
   const isPaidUser = current !== null && current !== 'free'
 
   return (
-    <>
-      {stale && (
-        <div className='mb-6 rounded-md bg-red-50 px-4 py-2 text-sm font-medium text-red-700'>
-          Oracle data stale – retry later
-        </div>
-      )}
+    <div className='grid gap-10 md:grid-cols-3'>
+      {planMeta.map((meta) => {
+        const priceRbtc = Number(formatUnits(meta.priceWei, RBTC_DECIMALS))
 
-      <div className='grid gap-10 md:grid-cols-3'>
-        {planMeta.map((meta) => {
-          const priceRbtc = Number(formatUnits(meta.priceWei, RBTC_DECIMALS))
-          const usdLabel = usd ? ` ≈ $${(priceRbtc * usd).toFixed(2)}` : ''
+        const isCurrent = current === meta.name.toLowerCase()
+        const highlight = isCurrent || (!current && meta.key === 'free')
+        const hideButton = meta.key === 'free' && isPaidUser
 
-          const isCurrent = current === meta.name.toLowerCase()
-          const highlight = isCurrent || (!current && meta.key === 'free')
-          const hideButton = meta.key === 'free' && isPaidUser
-
-          return (
-            <PricingCard
-              key={meta.key}
-              meta={meta}
-              priceRbtc={priceRbtc}
-              usdLabel={usdLabel}
-              isCurrent={isCurrent}
-              highlight={highlight}
-              hideButton={hideButton}
-            />
-          )
-        })}
-      </div>
-    </>
+        return (
+          <PricingCard
+            key={meta.key}
+            meta={meta}
+            priceRbtc={priceRbtc}
+            isCurrent={isCurrent}
+            highlight={highlight}
+            hideButton={hideButton}
+          />
+        )
+      })}
+    </div>
   )
 }
 
@@ -63,7 +50,6 @@ export function PricingGrid({ currentPlanName, planMeta }: PricingGridProps) {
 interface PricingCardProps {
   meta: PricingGridProps['planMeta'][number]
   priceRbtc: number
-  usdLabel: string
   isCurrent: boolean
   highlight: boolean
   hideButton: boolean
@@ -72,7 +58,6 @@ interface PricingCardProps {
 function PricingCard({
   meta,
   priceRbtc,
-  usdLabel,
   isCurrent,
   highlight,
   hideButton,
@@ -90,7 +75,7 @@ function PricingCard({
       ) : (
         <p className='text-foreground mb-6 text-4xl font-extrabold'>
           {priceRbtc}
-          <span className='text-muted-foreground ml-1 text-xl font-medium'>RBTC{usdLabel}</span>
+          <span className='text-muted-foreground ml-1 text-xl font-medium'>RBTC</span>
         </p>
       )}
 
@@ -103,7 +88,6 @@ function PricingCard({
         ))}
       </ul>
 
-      {/* Action button */}
       {hideButton ? null : isCurrent ? (
         <Button
           variant='secondary'
