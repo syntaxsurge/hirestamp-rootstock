@@ -78,7 +78,7 @@ export default function HeroSection() {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className='text-balance bg-gradient-to-r from-white to-neutral-200 bg-clip-text text-5xl font-extrabold leading-tight tracking-tight text-transparent drop-shadow md:text-6xl lg:text-7xl'
         >
-          Trustless&nbsp;Hiring&nbsp;on&nbsp;
+          Trustless Hiring on{' '}
           <span className='text-hirestamp-gradient animate-hirestamp-gradient'>Rootstock</span>
         </motion.h1>
 
@@ -88,8 +88,8 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.05, ease: 'easeOut' }}
           className='mx-auto mt-6 max-w-2xl text-lg/relaxed text-white/90 sm:text-xl'
         >
-          HireStamp turns résumés into on-chain proofs secured by Bitcoin’s hash-power so every
-          hire starts with&nbsp;<em>verifiable&nbsp;trust</em>.
+          HireStamp turns résumés into on-chain proofs secured by Bitcoin’s hash-power so every hire
+          starts with <em>verifiable trust</em>.
         </motion.p>
 
         {/* Features ------------------------------------------------------ */}
