@@ -151,12 +151,12 @@ Return the JSON now:
 
 ## Final Output
 
-| Item              | Location                         |
-| ----------------- | -------------------------------- |
-| Live Demo         | https://hirestamp.com            |
-| Demo Video        | https://hirestamp.com/demo-video |
-| Demo Video (Mirror) | https://youtu.be/f11PnUgLKno |
-| Presentation Deck | https://hirestamp.com/pitch-deck |
+| Item                       | Location                                                                                                                                                                        |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Live Demo                  | https://hirestamp.com                                                                                                                                                           |
+| Demo Video                 | https://hirestamp.com/demo-video                                                                                                                                                |
+| Demo Video (Mirror)        | https://youtu.be/f11PnUgLKno                                                                                                                                                    |
+| Presentation Deck          | https://hirestamp.com/pitch-deck                                                                                                                                                |
 | Presentation Deck (Mirror) | https://www.canva.com/design/DAGmXhyuvZA/FkR_sRHov5MhExPDpH6jRg/view?utm_content=DAGmXhyuvZA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3945d3e964 |
 
 ---

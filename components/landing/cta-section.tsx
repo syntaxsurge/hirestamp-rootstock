@@ -1,13 +1,14 @@
 'use client'
 
 import Link from 'next/link'
+
 import { motion } from 'framer-motion'
 
 import { Button } from '@/components/ui/button'
 
 export default function CTASection() {
   return (
-    <section id='cta' className='relative isolate overflow-hidden py-32 px-4 sm:px-6'>
+    <section id='cta' className='relative isolate overflow-hidden px-4 py-32 sm:px-6'>
       <Backdrop />
 
       <div className='mx-auto max-w-4xl px-4 text-center'>
@@ -16,7 +17,7 @@ export default function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className='text-balance bg-gradient-to-r from-white via-neutral-200 to-white bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl md:text-6xl'
+          className='bg-gradient-to-r from-white via-neutral-200 to-white bg-clip-text text-4xl font-extrabold tracking-tight text-balance text-transparent sm:text-5xl md:text-6xl'
         >
           Bring&nbsp;Verifiable&nbsp;Trust&nbsp;to&nbsp;Hiring&nbsp;Today
         </motion.h2>
@@ -60,7 +61,7 @@ function Backdrop() {
   return (
     <div className='pointer-events-none absolute inset-0 -z-10'>
       {/* Gradient waves */}
-      <div className='bg-hirestamp-gradient absolute -inset-20 animate-slow-pan opacity-60 blur-3xl' />
+      <div className='bg-hirestamp-gradient animate-slow-pan absolute -inset-20 opacity-60 blur-3xl' />
       {/* Grid overlay */}
       <div className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:64px_64px] opacity-10' />
 

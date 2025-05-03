@@ -2,14 +2,9 @@
 
 import Link from 'next/link'
 import { useMemo } from 'react'
+
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
-import {
-  ArrowDown,
-  BadgeCheck,
-  CloudLightning,
-  Shield,
-  Sparkles,
-} from 'lucide-react'
+import { ArrowDown, BadgeCheck, CloudLightning, Shield } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -62,7 +57,7 @@ export default function HeroSection() {
     <section
       id='hero'
       onMouseMove={handleMouseMove}
-      className='relative isolate overflow-hidden -mt-16 flex min-h-[90dvh] flex-col justify-center px-4 pt-40 pb-32 text-center sm:px-6 lg:px-0'
+      className='relative isolate -mt-16 flex min-h-[90dvh] flex-col justify-center overflow-hidden px-4 pt-40 pb-32 text-center sm:px-6 lg:px-0'
     >
       <GradientBackdrop />
       <Particles points={particles} />
@@ -76,7 +71,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
-          className='text-balance bg-gradient-to-r from-white to-neutral-200 bg-clip-text text-5xl font-extrabold leading-tight tracking-tight text-transparent drop-shadow md:text-6xl lg:text-7xl'
+          className='bg-gradient-to-r from-white to-neutral-200 bg-clip-text text-5xl leading-tight font-extrabold tracking-tight text-balance text-transparent drop-shadow md:text-6xl lg:text-7xl'
         >
           Trustless Hiring on{' '}
           <span className='text-hirestamp-gradient animate-hirestamp-gradient'>Rootstock</span>
@@ -167,7 +162,7 @@ function Particles({ points }: { points: Particle[] }) {
             animationDelay: `${i * 0.12}s`,
             animationDuration: `${p.d}s`,
           }}
-          className='absolute rounded-full bg-white/70 opacity-0 animate-[pulse_4s_linear_infinite]'
+          className='absolute animate-[pulse_4s_linear_infinite] rounded-full bg-white/70 opacity-0'
         />
       ))}
 
@@ -219,7 +214,7 @@ function GradientButton({
         'relative isolate overflow-hidden rounded-full px-8 py-3 font-semibold shadow-xl transition-transform duration-200 focus-visible:outline-none',
         solid
           ? 'bg-primary text-primary-foreground hover:-translate-y-0.5 hover:shadow-2xl'
-          : 'ring-border ring-1 bg-white/10 text-white/90 backdrop-blur hover:bg-white/20 hover:text-white',
+          : 'ring-border bg-white/10 text-white/90 ring-1 backdrop-blur hover:bg-white/20 hover:text-white',
         className,
       )}
       {...props}

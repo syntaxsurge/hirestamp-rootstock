@@ -45,7 +45,7 @@ export default function FeaturesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
               whileHover={{ y: -6 }}
-              className='group relative overflow-hidden rounded-2xl border border-border/60 bg-background/70 p-8 backdrop-blur'
+              className='group border-border/60 bg-background/70 relative overflow-hidden rounded-2xl border p-8 backdrop-blur'
             >
               <div className='bg-hirestamp-gradient absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-15' />
               <div className='relative z-10 flex flex-col items-center'>

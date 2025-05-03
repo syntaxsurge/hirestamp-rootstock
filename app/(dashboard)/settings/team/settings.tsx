@@ -16,6 +16,7 @@ import { PLAN_META } from '@/lib/constants/pricing'
 import { SUBSCRIPTION_MANAGER_ABI } from '@/lib/contracts/abis'
 import { syncSubscription } from '@/lib/payments/client'
 import type { SettingsProps } from '@/lib/types/components'
+
 import { InviteTeamMember } from './invite-team'
 
 /* -------------------------------------------------------------------------- */

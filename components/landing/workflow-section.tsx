@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircle } from 'lucide-react'
 
 /* -------------------------------------------------------------------------- */
 /*                                    DATA                                    */
@@ -24,7 +23,7 @@ export default function WorkflowSection() {
   return (
     <section
       id='workflow'
-      className='relative isolate bg-muted/40 py-28'
+      className='bg-muted/40 relative isolate py-28'
       aria-label='Journey to proof timeline'
     >
       {/* Subtle radial backdrop */}
@@ -52,10 +51,10 @@ export default function WorkflowSection() {
             >
               <div className='relative rounded-3xl p-[2px]'>
                 {/* Gradient outline */}
-                <div className='pointer-events-none absolute inset-0 -z-10 rounded-[inherit] bg-hirestamp-gradient opacity-20 blur-sm transition-opacity duration-300 group-hover:opacity-40' />
+                <div className='bg-hirestamp-gradient pointer-events-none absolute inset-0 -z-10 rounded-[inherit] opacity-20 blur-sm transition-opacity duration-300 group-hover:opacity-40' />
 
-                <div className='bg-background/70 rounded-[inherit] border border-border/60 p-8 backdrop-blur shadow-sm transition-shadow group-hover:shadow-xl'>
-                  <span className='mb-6 flex size-12 items-center justify-center rounded-full border-2 border-primary text-primary font-semibold'>
+                <div className='bg-background/70 border-border/60 rounded-[inherit] border p-8 shadow-sm backdrop-blur transition-shadow group-hover:shadow-xl'>
+                  <span className='border-primary text-primary mb-6 flex size-12 items-center justify-center rounded-full border-2 font-semibold'>
                     {i + 1}
                   </span>
                   <h3 className='text-lg font-semibold'>{step}</h3>

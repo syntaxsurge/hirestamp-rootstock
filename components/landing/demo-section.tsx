@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
-import { ExternalLink, PlayCircle } from 'lucide-react'
+import { useState } from 'react'
+
 import { motion } from 'framer-motion'
+import { ExternalLink, PlayCircle } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -68,7 +69,7 @@ export default function DemoSection() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           <Card className='overflow-hidden rounded-3xl shadow-xl'>
-            <CardHeader className='flex flex-row items-center justify-between gap-4 bg-background/80 p-6 backdrop-blur'>
+            <CardHeader className='bg-background/80 flex flex-row items-center justify-between gap-4 p-6 backdrop-blur'>
               <CardTitle className='text-lg font-semibold'>{active.title}</CardTitle>
               <Button asChild variant='ghost' size='icon' className='h-8 w-8'>
                 <Link href={active.link} target='_blank' rel='noopener noreferrer'>

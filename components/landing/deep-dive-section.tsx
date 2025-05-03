@@ -28,7 +28,7 @@ const ROLES = [
 
 export default function DeepDiveSection() {
   return (
-    <section id='deep-dive' className='relative isolate bg-muted/40 py-32'>
+    <section id='deep-dive' className='bg-muted/40 relative isolate py-32'>
       <div className='mx-auto max-w-6xl px-4'>
         <header className='text-center'>
           <h2 className='text-foreground text-3xl font-extrabold tracking-tight sm:text-4xl'>
@@ -48,7 +48,7 @@ export default function DeepDiveSection() {
               className='group perspective-1000'
             >
               <div className='relative rounded-3xl p-[2px]'>
-                <div className='pointer-events-none absolute inset-0 -z-10 rounded-[inherit] bg-hirestamp-gradient opacity-20 blur-sm transition-opacity duration-300 group-hover:opacity-40' />
+                <div className='bg-hirestamp-gradient pointer-events-none absolute inset-0 -z-10 rounded-[inherit] opacity-20 blur-sm transition-opacity duration-300 group-hover:opacity-40' />
                 <Card className='bg-background/80 rounded-[inherit] backdrop-blur'>
                   <CardHeader className='flex flex-col items-center gap-4 py-10 text-center'>
                     <div className='bg-hirestamp-gradient inline-flex size-16 items-center justify-center rounded-full text-white shadow-lg'>
@@ -60,7 +60,7 @@ export default function DeepDiveSection() {
                   <CardContent className='grid gap-3 px-10 pb-10'>
                     {bullets.map((b) => (
                       <p key={b} className='text-muted-foreground flex items-start text-sm'>
-                        <span className='mr-2 mt-1 size-1.5 shrink-0 rounded-full bg-primary' />
+                        <span className='bg-primary mt-1 mr-2 size-1.5 shrink-0 rounded-full' />
                         {b}
                       </p>
                     ))}

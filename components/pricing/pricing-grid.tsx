@@ -55,13 +55,7 @@ interface PricingCardProps {
   hideButton: boolean
 }
 
-function PricingCard({
-  meta,
-  priceRbtc,
-  isCurrent,
-  highlight,
-  hideButton,
-}: PricingCardProps) {
+function PricingCard({ meta, priceRbtc, isCurrent, highlight, hideButton }: PricingCardProps) {
   return (
     <div
       className={`border-border bg-background/70 rounded-3xl border p-8 shadow-sm backdrop-blur transition-shadow hover:shadow-xl ${

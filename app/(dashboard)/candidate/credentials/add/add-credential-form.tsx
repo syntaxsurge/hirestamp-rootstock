@@ -1,7 +1,7 @@
 'use client'
 
-import { useTransition } from 'react'
 import { useRouter } from 'next/navigation'
+import { useTransition } from 'react'
 
 import { Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
@@ -64,7 +64,12 @@ export default function AddCredentialForm({ addCredentialAction }: AddCredential
         router.refresh()
       } catch (err: any) {
         /* NEXT_REDIRECT digest indicates a server-side redirect on success */
-        if (err && typeof err === 'object' && 'digest' in err && (err as any).digest === 'NEXT_REDIRECT') {
+        if (
+          err &&
+          typeof err === 'object' &&
+          'digest' in err &&
+          (err as any).digest === 'NEXT_REDIRECT'
+        ) {
           toast.success('Credential added.', { id: toastId })
           router.refresh()
           return
