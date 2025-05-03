@@ -1,7 +1,5 @@
 'use server'
 
-import { redirect } from 'next/navigation'
-
 import { and, eq } from 'drizzle-orm'
 import { z } from 'zod'
 
@@ -33,7 +31,7 @@ const AddCredentialSchema = z.object({
 })
 
 /* -------------------------------------------------------------------------- */
-/*                           S E R V E R   A C T I O N                         */
+/*                           S E R V E R   A C T I O N                        */
 /* -------------------------------------------------------------------------- */
 
 export const addCredential = validatedActionWithUser(
@@ -92,6 +90,7 @@ export const addCredential = validatedActionWithUser(
       status,
     })
 
-    redirect('/candidate/credentials')
+    /* --------------------------- response ------------------------------- */
+    return { success: 'Credential added.' }
   },
 )
