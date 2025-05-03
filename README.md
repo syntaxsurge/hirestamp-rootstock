@@ -150,7 +150,6 @@ Return the JSON now:
 ## Final Output
 | Item                | Location                                                                                                  |
 |---------------------|-----------------------------------------------------------------------------------------------------------|
-| Artifact Location   | —                                                                                                         |
 | Live Demo           | https://hirestamp.xyz                                                                                     |
 | Demo Video          | https://hirestamp.com/demo-video                                                                          |
 | Presentation Deck   | https://hirestamp.com/pitch-deck                  |
