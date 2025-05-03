@@ -20,7 +20,7 @@ import { cn } from '@/lib/utils'
 
 const HERO_FEATURES = [
   { icon: ShieldCheck, label: 'Merge-Mined Security' },
-  { icon: TrendingUp, label: 'Oracle-Priced Subscriptions' },
+  { icon: TrendingUp, label: 'Live RBTC/USD Pricing' },
   { icon: Shuffle, label: 'Provably-Fair Quizzes' },
 ] as const
 
@@ -32,7 +32,7 @@ export default function HeroSection() {
   return (
     <section
       className='relative isolate -mx-4 overflow-hidden md:-mx-6'
-      aria-label='Rootstock powered hiring'
+      aria-label='Rootstack-native hiring'
     >
       {/* BACKGROUND LAYERS */}
       <GradientBackdrop />
@@ -40,7 +40,7 @@ export default function HeroSection() {
       <SparkleCluster />
 
       <div className='relative z-10 mx-auto flex max-w-7xl flex-col items-center px-4 py-32 text-center sm:py-44'>
-        {/* Eyebrow ------------------------------------------------------------- */}
+        {/* Eyebrow */}
         <motion.span
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -48,10 +48,10 @@ export default function HeroSection() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className='text-primary mb-4 text-sm font-semibold uppercase tracking-widest'
         >
-          Powered by Rootstock
+          Built for the Rootstack Economy
         </motion.span>
 
-        {/* Headline ------------------------------------------------------------ */}
+        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -60,12 +60,12 @@ export default function HeroSection() {
           className='text-balance text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl'
         >
           <span className='animate-hirestamp-gradient text-hirestamp-gradient'>
-            Future-Proof&nbsp;Hiring
+            Credentialing&nbsp;and&nbsp;Hiring&nbsp;Re-imagined
           </span>{' '}
-          on&nbsp;Rootstock
+          for&nbsp;Rootstack
         </motion.h1>
 
-        {/* Sub-headline -------------------------------------------------------- */}
+        {/* Sub-headline */}
         <motion.p
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,11 +73,12 @@ export default function HeroSection() {
           transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
           className='mx-auto mt-6 max-w-3xl text-lg/relaxed text-muted-foreground sm:text-xl md:text-2xl'
         >
-          HireStamp transforms credentials, skill scores and payments into immutable on-chain
-          proofs secured by Bitcoin hash-power and delivered through the Rootstock ecosystem.
+          HireStamp turns skills, credential hashes and subscription payments into verifiable&nbsp;
+          <strong>Rootstock</strong> proofs—instantly auditable, censorship-resistant and secured by
+          Bitcoin’s hash-power.
         </motion.p>
 
-        {/* Feature pills ------------------------------------------------------- */}
+        {/* Feature pills */}
         <ul className='mt-10 flex flex-wrap items-center justify-center gap-4 font-medium text-foreground/90'>
           {HERO_FEATURES.map(({ icon: Icon, label }, i) => (
             <motion.li
@@ -94,15 +95,13 @@ export default function HeroSection() {
           ))}
         </ul>
 
-        {/* CTAs ---------------------------------------------------------------- */}
+        {/* CTAs */}
         <div className='mt-12 flex flex-wrap justify-center gap-4'>
           <GradientButton href='/connect-wallet'>Launch App</GradientButton>
-          <GradientButton href='/#pricing' tone='outline'>
-            View Pricing
-          </GradientButton>
+          <GradientButton href='/#pricing' tone='outline'>View Pricing</GradientButton>
         </div>
 
-        {/* Scroll hint --------------------------------------------------------- */}
+        {/* Scroll hint */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 0.8, y: 0 }}
@@ -127,11 +126,9 @@ function GradientBackdrop() {
       {/* Radial glow */}
       <div className='absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_0%,transparent_70%)]' />
 
-      {/* Angled gradient wave (top-left → bottom-right) */}
-      <div className='bg-hirestamp-gradient absolute -top-[35rem] -left-[28rem] h-[95rem] w-[95rem] -rotate-45 opacity-20 blur-3xl' />
-
-      {/* Angled gradient wave (bottom-right → top-left) */}
-      <div className='bg-hirestamp-gradient absolute -bottom-[35rem] -right-[28rem] h-[95rem] w-[95rem] rotate-45 opacity-20 blur-3xl' />
+      {/* Angled gradient waves */}
+      <div className='bg-hirestamp-gradient absolute -top-[35rem] -left-[28rem] h-[95rem] w-[95rem] -rotate-45 opacity-25 blur-3xl' />
+      <div className='bg-hirestamp-gradient absolute -bottom-[35rem] -right-[28rem] h-[95rem] w-[95rem] rotate-45 opacity-25 blur-3xl' />
 
       {/* Subtle grid overlay */}
       <div className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px] opacity-20 dark:opacity-10' />
@@ -139,9 +136,7 @@ function GradientBackdrop() {
   )
 }
 
-/**
- * Frosted-glass grid layer – mirrors Rootstock’s clean glassmorphism cards.
- */
+/** Frosted-glass grid layer */
 function GlassGrid() {
   return (
     <div className='pointer-events-none absolute inset-0 -z-10 grid grid-cols-3 gap-8 opacity-30 md:grid-cols-6'>
@@ -155,9 +150,7 @@ function GlassGrid() {
   )
 }
 
-/**
- * Floating sparkle cluster for subtle motion parallax.
- */
+/** Floating sparkle cluster */
 function SparkleCluster() {
   return (
     <div className='pointer-events-none absolute inset-0 -z-5 overflow-hidden'>
