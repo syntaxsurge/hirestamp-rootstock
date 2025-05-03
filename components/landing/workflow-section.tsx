@@ -13,6 +13,7 @@ const STEPS = [
   'Upload & verify credentials',
   'Pass AI skill quizzes',
   'Get discovered by recruiters',
+  'Land your dream job',
 ] as const
 
 /* -------------------------------------------------------------------------- */
