@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils'
 const HERO_FEATURES = [
   { icon: ShieldCheck, label: 'On-Chain Verifications' },
   { icon: TrendingUp, label: 'Oracle-Priced Billing' },
-  { icon: Shuffle,   label: 'Randomised Quizzes' },
+  { icon: Shuffle, label: 'Randomised Quizzes' },
 ] as const
 
 /* -------------------------------------------------------------------------- */
@@ -36,7 +36,9 @@ export default function HeroSection() {
 
         {/* Headline */}
         <h1 className='text-4xl leading-tight font-extrabold tracking-tight text-balance sm:text-5xl md:text-6xl lg:text-7xl'>
-          <span className='text-hirestamp-gradient animate-hirestamp-gradient'>Verifiable Talent&nbsp;</span>
+          <span className='text-hirestamp-gradient animate-hirestamp-gradient'>
+            Verifiable Talent&nbsp;
+          </span>
           Meets On-Chain Data
         </h1>
 

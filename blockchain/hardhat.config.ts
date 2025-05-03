@@ -7,10 +7,10 @@ require("dotenv").config();
 /*                               E N V  V A R S                               */
 /* -------------------------------------------------------------------------- */
 
-const PRIVATE_KEY            = process.env.PRIVATE_KEY            ?? "";
-const RSK_MAINNET_RPC_URL    = process.env.RSK_MAINNET_RPC_URL    ?? "";
-const RSK_TESTNET_RPC_URL    = process.env.RSK_TESTNET_RPC_URL    ?? "";
-const BLOCKSCOUT_API_KEY     = process.env.BLOCKSCOUT_API_KEY     ?? "";
+const PRIVATE_KEY = process.env.PRIVATE_KEY ?? "";
+const RSK_MAINNET_RPC_URL = process.env.RSK_MAINNET_RPC_URL ?? "";
+const RSK_TESTNET_RPC_URL = process.env.RSK_TESTNET_RPC_URL ?? "";
+const BLOCKSCOUT_API_KEY = process.env.BLOCKSCOUT_API_KEY ?? "";
 
 /* -------------------------------------------------------------------------- */
 /*                               H A R D H A T                                */
@@ -63,9 +63,9 @@ const config: HardhatUserConfig = {
     ],
   },
   paths: {
-    sources:   "./contracts",
-    tests:     "./test",
-    cache:     "./cache",
+    sources: "./contracts",
+    tests: "./test",
+    cache: "./cache",
     artifacts: "./artifacts",
   },
   typechain: { target: "truffle-v5" },

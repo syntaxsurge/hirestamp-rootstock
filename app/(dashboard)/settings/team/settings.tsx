@@ -191,7 +191,7 @@ export function Settings({
               </>
             ) : (
               <p className='text-muted-foreground text-sm'>
-                  No DID yet. Create one in the HireStamp dashboard.
+                No DID yet. Create one in the HireStamp dashboard.
               </p>
             )}
           </CardContent>

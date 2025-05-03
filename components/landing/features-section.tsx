@@ -12,7 +12,8 @@ const features = [
   {
     icon: ShieldCheck,
     title: 'On-Chain Verifications',
-    description: 'Every credential hash is anchored on-chain and viewable on the Rootstock Explorer.',
+    description:
+      'Every credential hash is anchored on-chain and viewable on the Rootstock Explorer.',
   },
   {
     icon: Shuffle,

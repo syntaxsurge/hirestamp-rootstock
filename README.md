@@ -2,93 +2,93 @@
 
 _Verifiable Credentials, deterministic DIDs and on-chain subscription billing secured by Bitcoin’s hash-power through the Rootstock side-chain._
 
-- - -
+---
 
 ## ✨ Why HireStamp?
 
-*   **did:rsk identities** — every Team and Issuer mints a deterministic `did:rsk:0x…` via `DIDRegistry.createDID()`; those DIDs become the subject for all future credentials.
-*   **Credential NFTs** — hashed Verifiable Credentials are anchored as ERC-721 tokens through `CredentialNFT.mintCredential()`, giving recruiters and candidates an immutable audit trail.
-*   **SubscriptionManager** — Base / Plus plans are paid natively in RBTC; the UI converts amounts to USD in real-time and disables checkout if the quote is older than one hour.
-*   **Everything in one monorepo** — Next .js 14 App Router frontend, Drizzle-powered PostgreSQL backend and a fully-scripted Hardhat workspace under `/blockchain`.
+- **did:rsk identities** — every Team and Issuer mints a deterministic `did:rsk:0x…` via `DIDRegistry.createDID()`; those DIDs become the subject for all future credentials.
+- **Credential NFTs** — hashed Verifiable Credentials are anchored as ERC-721 tokens through `CredentialNFT.mintCredential()`, giving recruiters and candidates an immutable audit trail.
+- **SubscriptionManager** — Base / Plus plans are paid natively in RBTC; the UI converts amounts to USD in real-time and disables checkout if the quote is older than one hour.
+- **Everything in one monorepo** — Next .js 14 App Router frontend, Drizzle-powered PostgreSQL backend and a fully-scripted Hardhat workspace under `/blockchain`.
 
-- - -
+---
 
 ## 🚀 Quick Start
 
 1.  **Clone & install**
-    
+
     ```
     git clone https://github.com/syntaxsurge/hirestamp-rootstock.git
     cd hirestamp-rootstock
     pnpm install
     ```
-    
+
 2.  **Environment files**
-    
+
     ```
     cp .env.example .env
     cp blockchain/.env.example blockchain/.env
     ```
-    
+
     Populate at minimum:
-    
-    *   `POSTGRES_URL`
-    *   contract addresses fetched after deployment (see next step)
-    *   `RSK_TESTNET_RPC_URL` or `RSK_MAINNET_RPC_URL`
+
+    - `POSTGRES_URL`
+    - contract addresses fetched after deployment (see next step)
+    - `RSK_TESTNET_RPC_URL` or `RSK_MAINNET_RPC_URL`
+
 3.  **Deploy smart contracts**
-    
+
     The Solidity layer lives in `/blockchain`. Follow the detailed instructions in `blockchain/README.html` to compile, test and deploy on Rootstock.
-    
+
 4.  **Database setup (optional Docker helper)**
-    
+
     ```
     docker compose up -d database     # boots Postgres 16 on :54322
     pnpm db:reset                     # runs migrations & seeds demo data
     ```
-    
+
 5.  **Launch HireStamp**
-    
+
     ```
     pnpm dev
     ```
-    
-    Open [http://localhost:3000](http://localhost:3000) and connect a Rootstock-enabled wallet.
-    
 
-- - -
+    Open [http://localhost:3000](http://localhost:3000) and connect a Rootstock-enabled wallet.
+
+---
 
 ## 🖥 User-Journey Snapshot
 
 ### Candidate
 
-*   Wallet-first onboarding, mandatory DID mint.
-*   Upload credentials → UNVERIFIED · PENDING · VERIFIED/REJECTED lifecycle.
-*   AI-graded skill-checks; passing score triggers on-chain anchor.
+- Wallet-first onboarding, mandatory DID mint.
+- Upload credentials → UNVERIFIED · PENDING · VERIFIED/REJECTED lifecycle.
+- AI-graded skill-checks; passing score triggers on-chain anchor.
 
 ### Issuer
 
-*   Self-service onboarding; admin approval required.
-*   Approve / Reject verification requests — approval signs and mints the Credential NFT.
+- Self-service onboarding; admin approval required.
+- Approve / Reject verification requests — approval signs and mints the Credential NFT.
 
 ### Recruiter
 
-*   Full-text talent search with verified-only toggle.
-*   Kanban pipelines, AI fit-summaries cached per recruiter × candidate.
+- Full-text talent search with verified-only toggle.
+- Kanban pipelines, AI fit-summaries cached per recruiter × candidate.
 
 ### Admin
 
-*   Issuer approvals, role upgrades, credential revocation.
-*   Platform DID rotation and plan price updates (RBTC wei).
+- Issuer approvals, role upgrades, credential revocation.
+- Platform DID rotation and plan price updates (RBTC wei).
 
-- - -
+---
 
 ## 🧑‍💻 Architecture at a Glance
 
-*   **Frontend**: Next .js 14 (App Router), React Server / Client Components.
-*   **Backend**: PostgreSQL via Drizzle ORM, Edge-runtime middleware, server actions.
-*   **Smart Contracts**: see `blockchain/README.html`.
+- **Frontend**: Next .js 14 (App Router), React Server / Client Components.
+- **Backend**: PostgreSQL via Drizzle ORM, Edge-runtime middleware, server actions.
+- **Smart Contracts**: see `blockchain/README.html`.
 
-- - -
+---
 
 ## 🧠 AI Usage and Prompts
 
@@ -148,13 +148,14 @@ Return the JSON now:
 - **Fit Summary** – several iterations added: JSON schema surfaced inside the system message, 12-word bullet constraint, and a validation-with-retry loop to guarantee compliant output.
 
 ## Final Output
-| Item                | Location                                                                                                  |
-|---------------------|-----------------------------------------------------------------------------------------------------------|
-| Live Demo           | https://hirestamp.xyz                                                                                     |
-| Demo Video          | https://hirestamp.com/demo-video                                                                          |
-| Presentation Deck   | https://hirestamp.com/pitch-deck                  |
 
-- - -
+| Item              | Location                         |
+| ----------------- | -------------------------------- |
+| Live Demo         | https://hirestamp.xyz            |
+| Demo Video        | https://hirestamp.com/demo-video |
+| Presentation Deck | https://hirestamp.com/pitch-deck |
+
+---
 
 ## 🙋 Need Help?
 

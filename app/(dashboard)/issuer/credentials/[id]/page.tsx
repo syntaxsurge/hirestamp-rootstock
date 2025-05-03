@@ -5,7 +5,6 @@ import { eq, and } from 'drizzle-orm'
 import { FileText, BadgeCheck, Clock, XCircle } from 'lucide-react'
 
 import { CredentialActions } from '@/components/dashboard/issuer/credential-actions'
-
 import RequireDidGate from '@/components/dashboard/require-did-gate'
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card'
 import PageCard from '@/components/ui/page-card'

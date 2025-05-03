@@ -23,7 +23,9 @@ export default function CTASection() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className='text-3xl font-extrabold tracking-tight text-balance text-white sm:text-4xl md:text-5xl lg:text-6xl'
         >
-          <span className='text-hirestamp-gradient animate-hirestamp-gradient'>Rootstock-Native Trust </span>
+          <span className='text-hirestamp-gradient animate-hirestamp-gradient'>
+            Rootstock-Native Trust{' '}
+          </span>
           For Every Hire
         </motion.h2>
 

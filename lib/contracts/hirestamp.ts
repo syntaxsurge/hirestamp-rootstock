@@ -2,12 +2,6 @@ import { ethers } from 'ethers'
 import type { Log, LogDescription, InterfaceAbi } from 'ethers'
 
 import {
-  provider,
-  didRegistry,
-  credentialNft,
-  subscriptionManager,
-} from '@/lib/contracts/index'
-import {
   DID_REGISTRY_ADDRESS,
   CREDENTIAL_NFT_ADDRESS,
   SUBSCRIPTION_MANAGER_ADDRESS,
@@ -17,6 +11,7 @@ import {
   CREDENTIAL_NFT_ABI,
   SUBSCRIPTION_MANAGER_ABI,
 } from '@/lib/contracts/abis'
+import { provider, didRegistry, credentialNft, subscriptionManager } from '@/lib/contracts/index'
 import { toBytes32 } from '@/lib/utils/address'
 
 /* -------------------------------------------------------------------------- */
@@ -41,9 +36,7 @@ function resolveSigner({ signer, signerAddress }: SignerArgs = {}): ethers.Signe
  * @param args.signer  Connected wallet signer (preferred).
  * @param args.docHash Optional keccak-256 hash of an off-chain DID Document.
  */
-export async function createRootstockDID(
-  args?: SignerArgs & { docHash?: string },
-) {
+export async function createRootstockDID(args?: SignerArgs & { docHash?: string }) {
   const signer = resolveSigner(args)
 
   const registryWrite = new ethers.Contract(
@@ -52,9 +45,7 @@ export async function createRootstockDID(
     signer,
   )
 
-  const receipt = await (
-    await registryWrite.createDID(args?.docHash ?? ethers.ZeroHash)
-  ).wait()
+  const receipt = await (await registryWrite.createDID(args?.docHash ?? ethers.ZeroHash)).wait()
 
   return {
     did: await didRegistry.didOf(await signer.getAddress()),
@@ -109,10 +100,7 @@ export async function issueCredential(
   return { tokenId: parsedLog.args.tokenId as bigint, txHash: receipt.hash }
 }
 
-export async function verifyCredential(
-  tokenId: bigint,
-  expectedVcHash: string,
-): Promise<boolean> {
+export async function verifyCredential(tokenId: bigint, expectedVcHash: string): Promise<boolean> {
   return (
     (await credentialNft.getVcHash(tokenId)).toLowerCase() ===
     toBytes32(expectedVcHash).toLowerCase()

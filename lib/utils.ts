@@ -27,8 +27,6 @@ export function buildLink(
   return `${basePath}${qs ? `?${qs}` : ''}`
 }
 
-
-
 /**
  * Convert enum-like or snake_case strings to human-readable lowercase text.
  * e.g. "PENDING_APPROVAL" → "pending approval", "active" → "active".

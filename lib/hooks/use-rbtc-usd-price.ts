@@ -13,9 +13,7 @@ import type { PriceState, UseRbtcUsdPriceOptions } from '@/lib/types/hooks'
  * In production you should replace this with an on-chain oracle read.
  * ------------------------------------------------------------------------- */
 
-export function useRbtcUsdPrice(
-  { maxAgeMs = 3_600_000 }: UseRbtcUsdPriceOptions = {},
-): PriceState {
+export function useRbtcUsdPrice({ maxAgeMs = 3_600_000 }: UseRbtcUsdPriceOptions = {}): PriceState {
   const [state, setState] = useState<PriceState>({
     usd: null,
     stale: false,
@@ -37,10 +35,7 @@ export function useRbtcUsdPrice(
 
         /* mark stale after maxAgeMs ------------------------------------- */
         clearTimeout(staleTimer)
-        staleTimer = setTimeout(
-          () => setState((s) => ({ ...s, stale: true })),
-          maxAgeMs,
-        )
+        staleTimer = setTimeout(() => setState((s) => ({ ...s, stale: true })), maxAgeMs)
       } catch {
         setState({ usd: null, stale: true, loading: false })
       }

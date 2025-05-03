@@ -4,7 +4,7 @@ import { getEnv } from '@/lib/utils/env'
 /*                       E N V I R O N M E N T   C O N F I G                  */
 /* -------------------------------------------------------------------------- */
 
-export const OPENAI_API_KEY        = getEnv('OPENAI_API_KEY')        as string
+export const OPENAI_API_KEY = getEnv('OPENAI_API_KEY') as string
 
 /* ------------------------------ Rootstock RPC ----------------------------- */
 
