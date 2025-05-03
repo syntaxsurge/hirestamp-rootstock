@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter, usePathname } from 'next/navigation'
-import { ReactNode, useEffect, useRef } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 
 import { getDefaultConfig, RainbowKitProvider, darkTheme, lightTheme } from '@rainbow-me/rainbowkit'
 import '@rainbow-me/rainbowkit/styles.css'
@@ -138,10 +138,19 @@ function WalletConnectionListener() {
 
 function RainbowKitWithTheme({ children }: { children: ReactNode }) {
   const { resolvedTheme } = useTheme()
+
+  /* Prevent server ↔ client style divergence */
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+  if (!mounted) return null
+
+  const accent = '#008f78' // Rootstock dark-teal brand colour
   const rkTheme =
     resolvedTheme === 'dark'
-      ? darkTheme({ accentColor: '#00e5c4', accentColorForeground: '#ffffff' })
-      : lightTheme({ accentColor: '#00e5c4', accentColorForeground: '#ffffff' })
+      ? darkTheme({ accentColor: accent, accentColorForeground: '#ffffff' })
+      : lightTheme({ accentColor: accent, accentColorForeground: '#ffffff' })
 
   return (
     <RainbowKitProvider theme={rkTheme}>
