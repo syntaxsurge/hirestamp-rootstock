@@ -7,7 +7,7 @@ import { getDefaultConfig, RainbowKitProvider, darkTheme, lightTheme } from '@ra
 import '@rainbow-me/rainbowkit/styles.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useTheme } from 'next-themes'
-import { WagmiProvider, http, useAccount, useNetwork } from 'wagmi'
+import { WagmiProvider, http, useAccount, useChainId } from 'wagmi'
 
 import { WALLETCONNECT_PROJECT_ID } from './config'
 
@@ -60,8 +60,8 @@ const queryClient = new QueryClient()
 
 function WalletConnectionListener() {
   const { isConnected, address } = useAccount()
-  const { chain } = useNetwork()
-  const correctNetwork = chain?.id === rootstockMain.id || chain?.id === rootstockTest.id
+  const chainId = useChainId()
+  const correctNetwork = chainId === rootstockMain.id || chainId === rootstockTest.id
   const router = useRouter()
   const pathname = usePathname()
 
