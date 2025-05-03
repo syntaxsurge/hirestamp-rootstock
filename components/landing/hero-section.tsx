@@ -1,4 +1,3 @@
-// components/landing/hero-section.tsx
 'use client'
 
 import Link from 'next/link'
@@ -20,9 +19,9 @@ import { cn } from '@/lib/utils'
 /* -------------------------------------------------------------------------- */
 
 const HERO_FEATURES = [
-  { icon: ShieldCheck, label: 'On-Chain Verifications' },
-  { icon: TrendingUp, label: 'Oracle-Priced Billing' },
-  { icon: Shuffle, label: 'Randomised Quizzes' },
+  { icon: ShieldCheck, label: 'Merge-Mined Security' },
+  { icon: TrendingUp, label: 'Oracle-Priced Subscriptions' },
+  { icon: Shuffle, label: 'Provably-Fair Quizzes' },
 ] as const
 
 /* -------------------------------------------------------------------------- */
@@ -33,7 +32,7 @@ export default function HeroSection() {
   return (
     <section
       className='relative isolate -mx-4 overflow-hidden md:-mx-6'
-      aria-label='Rootstock-powered hiring'
+      aria-label='Rootstock powered hiring'
     >
       {/* BACKGROUND LAYERS */}
       <GradientBackdrop />
@@ -49,7 +48,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className='text-primary mb-4 text-sm font-semibold uppercase tracking-widest'
         >
-          Built on Rootstock Network
+          Powered by Rootstock
         </motion.span>
 
         {/* Headline ------------------------------------------------------------ */}
@@ -61,9 +60,9 @@ export default function HeroSection() {
           className='text-balance text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl'
         >
           <span className='animate-hirestamp-gradient text-hirestamp-gradient'>
-            Verifiable&nbsp;Talent&nbsp;
-          </span>
-          Meets&nbsp;On-Chain&nbsp;Data
+            Future-Proof&nbsp;Hiring
+          </span>{' '}
+          on&nbsp;Rootstock
         </motion.h1>
 
         {/* Sub-headline -------------------------------------------------------- */}
@@ -74,8 +73,8 @@ export default function HeroSection() {
           transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
           className='mx-auto mt-6 max-w-3xl text-lg/relaxed text-muted-foreground sm:text-xl md:text-2xl'
         >
-          HireStamp turns every proof of skill, employment and payment into an immutable credential
-          anchored by Rootstock’s oracle, data connector and randomness protocols.
+          HireStamp transforms credentials, skill scores and payments into immutable on-chain
+          proofs secured by Bitcoin hash-power and delivered through the Rootstock ecosystem.
         </motion.p>
 
         {/* Feature pills ------------------------------------------------------- */}
@@ -99,7 +98,7 @@ export default function HeroSection() {
         <div className='mt-12 flex flex-wrap justify-center gap-4'>
           <GradientButton href='/connect-wallet'>Launch App</GradientButton>
           <GradientButton href='/#pricing' tone='outline'>
-            See Pricing
+            View Pricing
           </GradientButton>
         </div>
 
@@ -141,7 +140,7 @@ function GradientBackdrop() {
 }
 
 /**
- * Frosted-glass grid layer – mimics Rootstock’s clean glassmorphism cards.
+ * Frosted-glass grid layer – mirrors Rootstock’s clean glassmorphism cards.
  */
 function GlassGrid() {
   return (
