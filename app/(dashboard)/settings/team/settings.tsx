@@ -14,10 +14,8 @@ import { TablePagination } from '@/components/ui/tables/table-pagination'
 import { CHAIN_ID, SUBSCRIPTION_MANAGER_ADDRESS } from '@/lib/config'
 import { PLAN_META } from '@/lib/constants/pricing'
 import { SUBSCRIPTION_MANAGER_ABI } from '@/lib/contracts/abis'
-import { useRbtcUsdPrice } from '@/lib/hooks/use-rbtc-usd-price'
 import { syncSubscription } from '@/lib/payments/client'
 import type { SettingsProps } from '@/lib/types/components'
-
 import { InviteTeamMember } from './invite-team'
 
 /* -------------------------------------------------------------------------- */
@@ -31,21 +29,13 @@ function RenewSubscriptionButton({ planName }: { planName: 'base' | 'plus' }) {
   const publicClient = usePublicClient()
 
   const [pending, setPending] = useState(false)
-  const { usd, stale } = useRbtcUsdPrice()
 
   const meta = PLAN_META.find((p) => p.key === planName)
   const planKey: 1 | 2 = planName === 'base' ? 1 : 2
   const priceWei = meta?.priceWei ?? 0n
 
-  const priceRbtc = Number(priceWei) / 1e18
-  const usdLabel = usd ? `≈ $${(priceRbtc * usd).toFixed(2)}` : null
-
   async function renew() {
     if (pending) return
-    if (stale) {
-      toast.error('Oracle data stale – retry later')
-      return
-    }
 
     if (!SUBSCRIPTION_MANAGER_ADDRESS) {
       toast.error('Subscription manager address missing.')
@@ -92,27 +82,24 @@ function RenewSubscriptionButton({ planName }: { planName: 'base' | 'plus' }) {
   }
 
   return (
-    <div className='flex flex-col items-center gap-1'>
-      <Button
-        onClick={renew}
-        disabled={pending || stale}
-        variant='outline'
-        className='flex items-center gap-2'
-      >
-        {pending ? (
-          <>
-            <Loader2 className='mr-2 h-4 w-4 animate-spin' />
-            Processing…
-          </>
-        ) : (
-          <>
-            Renew Subscription
-            <RotateCcw className='h-4 w-4' />
-          </>
-        )}
-      </Button>
-      {usdLabel && <span className='text-muted-foreground text-xs'>{usdLabel}</span>}
-    </div>
+    <Button
+      onClick={renew}
+      disabled={pending}
+      variant='outline'
+      className='flex items-center gap-2'
+    >
+      {pending ? (
+        <>
+          <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+          Processing…
+        </>
+      ) : (
+        <>
+          Renew Subscription
+          <RotateCcw className='h-4 w-4' />
+        </>
+      )}
+    </Button>
   )
 }
 
