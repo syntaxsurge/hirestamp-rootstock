@@ -19,14 +19,14 @@ const EMBEDS: Embed[] = [
   {
     key: 'video',
     title: '2-Minute Product Tour',
-    src: 'https://www.youtube.com/embed/xxxxx',
-    link: 'https://hirestamp.com/demo-video',
+    src: 'https://www.youtube.com/embed/f11PnUgLKno',
+    link: '/demo-video',
   },
   {
     key: 'deck',
     title: 'Investor Deck',
-    src: 'https://www.canva.com/design/xxxxx/view?embed',
-    link: 'https://hirestamp.com/pitch-deck',
+    src: 'https://www.canva.com/design/DAGmXhyuvZA/FkR_sRHov5MhExPDpH6jRg/view?embed',
+    link: '/pitch-deck',
   },
 ]
 
