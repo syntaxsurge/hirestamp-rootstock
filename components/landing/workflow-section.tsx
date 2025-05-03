@@ -3,39 +3,66 @@
 import { motion } from 'framer-motion'
 import { CheckCircle } from 'lucide-react'
 
-const steps = [
+/* -------------------------------------------------------------------------- */
+/*                                    DATA                                    */
+/* -------------------------------------------------------------------------- */
+
+const STEPS = [
   'Create account & workspace',
   'Mint did:rsk identity',
   'Upload & verify credentials',
   'Pass AI skill quizzes',
   'Get discovered by recruiters',
-]
+] as const
+
+/* -------------------------------------------------------------------------- */
+/*                                COMPONENT                                   */
+/* -------------------------------------------------------------------------- */
 
 export default function WorkflowSection() {
   return (
-    <section id='workflow' className='bg-background py-28'>
-      <div className='mx-auto max-w-4xl px-4'>
-        <h2 className='text-center text-3xl font-extrabold tracking-tight sm:text-4xl'>
-          Journey&nbsp;to&nbsp;Proof
-        </h2>
+    <section
+      id='workflow'
+      className='relative isolate bg-muted/40 py-28'
+      aria-label='Journey to proof timeline'
+    >
+      {/* Subtle radial backdrop */}
+      <div className='pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(0,255,190,0.12)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_top,rgba(0,255,190,0.06)_0%,transparent_70%)]' />
 
-        <ol className='relative mt-16 space-y-12 border-l-2 border-primary/30 pl-6'>
-          {steps.map((s, i) => (
+      <div className='mx-auto max-w-6xl px-4 sm:px-6'>
+        <header className='mb-16 text-center'>
+          <h2 className='text-foreground text-3xl font-extrabold tracking-tight sm:text-4xl'>
+            Journey&nbsp;to&nbsp;Proof
+          </h2>
+          <p className='text-muted-foreground mx-auto mt-4 max-w-2xl'>
+            Five&nbsp;simple&nbsp;steps to take you from claim to unimpeachable&nbsp;evidence.
+          </p>
+        </header>
+
+        <ul className='grid gap-8 sm:grid-cols-2 lg:grid-cols-3'>
+          {STEPS.map((step, i) => (
             <motion.li
-              key={s}
+              key={step}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.04 }}
-              className='relative'
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className='group'
             >
-              <span className='bg-background absolute -left-3.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-primary text-primary shadow-sm'>
-                <CheckCircle className='h-4 w-4' />
-              </span>
-              <h3 className='text-lg font-semibold'>{s}</h3>
+              <div className='relative rounded-3xl p-[2px]'>
+                {/* Gradient outline */}
+                <div className='pointer-events-none absolute inset-0 -z-10 rounded-[inherit] bg-hirestamp-gradient opacity-20 blur-sm transition-opacity duration-300 group-hover:opacity-40' />
+
+                <div className='bg-background/70 rounded-[inherit] border border-border/60 p-8 backdrop-blur shadow-sm transition-shadow group-hover:shadow-xl'>
+                  <span className='mb-6 flex size-12 items-center justify-center rounded-full border-2 border-primary text-primary font-semibold'>
+                    {i + 1}
+                  </span>
+                  <h3 className='text-lg font-semibold'>{step}</h3>
+                </div>
+              </div>
             </motion.li>
           ))}
-        </ol>
+        </ul>
       </div>
     </section>
   )

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 
 export default function CTASection() {
   return (
-    <section id='cta' className='relative isolate overflow-hidden py-32 -mx-4 md:-mx-6'>
+    <section id='cta' className='relative isolate overflow-hidden py-32 px-4 sm:px-6'>
       <Backdrop />
 
       <div className='mx-auto max-w-4xl px-4 text-center'>
