@@ -93,7 +93,7 @@ export async function issueCredential(
         return null
       }
     })
-    .find((d): d is LogDescription => !!d && d.name === 'CredentialMinted')
+    .find((d: LogDescription | null): d is LogDescription => !!d && d.name === 'CredentialMinted')
 
   if (!parsedLog) throw new Error('CredentialMinted event not found')
 
