@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircle2, Repeat, Wallet, ShieldCheck } from 'lucide-react'
+import { CheckCircle2, Wallet, ShieldCheck, Key } from 'lucide-react'
 
 const features = [
   {
@@ -15,14 +15,16 @@ const features = [
     description: 'Credential hashes live on-chain forever under Bitcoin’s security budget.',
   },
   {
-    icon: Repeat,
-    title: 'Auto-Rotating DIDs',
-    description: 'Deterministic identity that rotates keys while preserving trust graphs.',
+    icon: Key,
+    title: 'Rootstock DIDs',
+    description:
+      'Deterministic on-chain identities that bind verifiable credentials to teams and issuers.',
   },
   {
     icon: CheckCircle2,
-    title: 'SLA-Backed Proofs',
-    description: 'Verifications carry JSON-LD signatures plus time-bound SLAs for issuers.',
+    title: 'Credential NFTs',
+    description:
+      'Each verified credential mints an ERC-721 token providing immutable provenance and transferability.',
   },
 ]
 
