@@ -153,7 +153,7 @@ Return the JSON now:
 
 | Item              | Location                         |
 | ----------------- | -------------------------------- |
-| Live Demo         | https://hirestamp.xyz            |
+| Live Demo         | https://hirestamp.com            |
 | Demo Video        | https://hirestamp.com/demo-video |
 | Demo Video (Mirror) | https://youtu.be/f11PnUgLKno |
 | Presentation Deck | https://hirestamp.com/pitch-deck |
