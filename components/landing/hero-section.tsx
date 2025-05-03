@@ -32,7 +32,7 @@ export default function HeroSection() {
   return (
     <section
       className='relative isolate -mx-4 overflow-hidden md:-mx-6'
-      aria-label='Rootstack-native hiring'
+      aria-label='Rootstock-native hiring'
     >
       {/* BACKGROUND LAYERS */}
       <GradientBackdrop />
@@ -48,7 +48,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className='text-primary mb-4 text-sm font-semibold uppercase tracking-widest'
         >
-          Built for the Rootstack Economy
+          Built for the Rootstock Economy
         </motion.span>
 
         {/* Headline */}
@@ -62,7 +62,7 @@ export default function HeroSection() {
           <span className='animate-hirestamp-gradient text-hirestamp-gradient'>
             Credentialing&nbsp;and&nbsp;Hiring&nbsp;Re-imagined
           </span>{' '}
-          for&nbsp;Rootstack
+          for&nbsp;Rootstock
         </motion.h1>
 
         {/* Sub-headline */}
