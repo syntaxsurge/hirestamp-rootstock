@@ -1,6 +1,7 @@
 'use client'
 
 import { useTransition } from 'react'
+import { useRouter } from 'next/navigation'
 
 import { Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
@@ -37,6 +38,7 @@ const CATEGORIES = [
 
 export default function AddCredentialForm({ addCredentialAction }: AddCredentialFormProps) {
   const [isPending, startTransition] = useTransition()
+  const router = useRouter()
 
   /* ---------------------------------------------------------------------- */
   /*                               S U B M I T                              */
@@ -50,12 +52,24 @@ export default function AddCredentialForm({ addCredentialAction }: AddCredential
     startTransition(async () => {
       try {
         const res = await addCredentialAction(fd)
+
+        /* Explicit error from server-action */
         if (res && typeof res === 'object' && 'error' in res && res.error) {
           toast.error(res.error, { id: toastId })
-        } else {
-          toast.success('Credential added.', { id: toastId })
+          return
         }
+
+        /* Successful result without redirect */
+        toast.success('Credential added.', { id: toastId })
+        router.refresh()
       } catch (err: any) {
+        /* NEXT_REDIRECT digest indicates a server-side redirect on success */
+        if (err && typeof err === 'object' && 'digest' in err && (err as any).digest === 'NEXT_REDIRECT') {
+          toast.success('Credential added.', { id: toastId })
+          router.refresh()
+          return
+        }
+
         toast.error(err?.message ?? 'Something went wrong.', { id: toastId })
       }
     })
