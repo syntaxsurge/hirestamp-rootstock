@@ -11,8 +11,7 @@ import {
   Award,
   BookOpen,
   Key,
-  Settings as Cog,
-  Users as UsersIcon,
+  Settings,
   Activity,
   Shield,
   Menu,
@@ -150,8 +149,8 @@ export default function DashboardShell({ children }: { children: React.ReactNode
 
   /* Settings navigation */
   const settingsNav: SidebarNavItem[] = [
-    { href: '/settings/general', icon: Cog, label: 'General' },
-    { href: '/settings/team', icon: UsersIcon, label: 'Team' },
+    { href: '/settings/general', icon: Settings, label: 'General' },
+    { href: '/settings/team', icon: Users, label: 'Team' },
     { href: '/settings/activity', icon: Activity, label: 'Activity' },
     { href: '/settings/security', icon: Shield, label: 'Security' },
   ]

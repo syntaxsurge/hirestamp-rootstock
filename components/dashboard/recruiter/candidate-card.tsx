@@ -17,11 +17,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import type { PipelineCandidateCard as Candidate } from '@/lib/types/components'
+import type { PipelineCandidateCard } from '@/lib/types/components'
 
 import EditCandidateModal from './edit-candidate-modal'
 
-export default function CandidateCard({ candidate }: { candidate: Candidate }) {
+export default function CandidateCard({ candidate }: { candidate: PipelineCandidateCard }) {
   const [dialogOpen, setDialogOpen] = useState(false)
   const [isPending, startTransition] = useTransition()
 

@@ -7,7 +7,7 @@ import { TablePagination } from '@/components/ui/tables/table-pagination'
 import { requireAuth } from '@/lib/auth/guards'
 import { db } from '@/lib/db/drizzle'
 import { getJobOpeningsPage } from '@/lib/db/queries/job-openings'
-import { candidates as candidatesTable } from '@/lib/db/schema/candidate'
+import { candidates } from '@/lib/db/schema/candidate'
 import { pipelineCandidates } from '@/lib/db/schema/recruiter'
 import type { JobRow } from '@/lib/types/tables'
 import { getTableParams, resolveSearchParams, type Query } from '@/lib/utils/query'
@@ -44,9 +44,9 @@ export default async function JobsDirectoryPage({
   let appliedSet = new Set<number>()
   if (isCandidate) {
     const [cand] = await db
-      .select({ id: candidatesTable.id })
-      .from(candidatesTable)
-      .where(eq(candidatesTable.userId, user!.id))
+      .select({ id: candidates.id })
+      .from(candidates)
+      .where(eq(candidates.userId, user!.id))
       .limit(1)
 
     if (cand) {

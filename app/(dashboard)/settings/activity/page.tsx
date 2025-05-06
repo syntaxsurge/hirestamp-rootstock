@@ -1,4 +1,4 @@
-import { Activity as ActivityIcon } from 'lucide-react'
+import { Activity } from 'lucide-react'
 
 import ActivityLogsTable from '@/components/dashboard/settings/activity-logs-table'
 import PageCard from '@/components/ui/page-card'
@@ -37,7 +37,7 @@ export default async function ActivityPage({ searchParams }: { searchParams?: Pr
   /* ------------------------------ View ----------------------------------- */
   return (
     <PageCard
-      icon={ActivityIcon}
+      icon={Activity}
       title='Activity Log'
       description='Review your recent account activity and wallet connections.'
     >

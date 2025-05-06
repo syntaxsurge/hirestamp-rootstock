@@ -1,4 +1,4 @@
-import { Settings as SettingsIcon } from 'lucide-react'
+import { Settings } from 'lucide-react'
 
 import PageCard from '@/components/ui/page-card'
 import { requireAuth } from '@/lib/auth/guards'
@@ -12,7 +12,7 @@ export default async function GeneralSettingsPage() {
 
   return (
     <PageCard
-      icon={SettingsIcon}
+      icon={Settings}
       title='Account Information'
       description='Update your name and email address.'
     >
