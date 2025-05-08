@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/dialog'
 import { CREDENTIAL_NFT_ADDRESS, CHAIN_ID } from '@/lib/config'
 import { CREDENTIAL_NFT_ABI } from '@/lib/contracts/abis'
-import type { QuizMeta as Quiz } from '@/lib/types/components'
+import type { QuizMeta } from '@/lib/types/components'
 import { copyToClipboard } from '@/lib/utils'
 import { txUrl } from '@/lib/utils/explorer'
 
@@ -64,7 +64,7 @@ function randomSeed(): string {
   )
 }
 
-export default function StartQuizForm({ quiz }: { quiz: Quiz }) {
+export default function StartQuizForm({ quiz }: { quiz: QuizMeta }) {
   const { address, chain } = useAccount()
   const { switchChainAsync } = useSwitchChain()
   const { data: walletClient } = useWalletClient()

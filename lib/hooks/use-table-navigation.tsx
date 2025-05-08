@@ -6,7 +6,7 @@ import * as React from 'react'
 
 import { ArrowUpDown } from 'lucide-react'
 
-import type { TableNavigationOptions as Options } from '@/lib/types/ui'
+import type { TableNavigationOptions } from '@/lib/types/ui'
 import { buildLink } from '@/lib/utils'
 
 /**
@@ -21,7 +21,7 @@ export function useTableNavigation({
   searchQuery,
   paramKeys,
   debounce = 400,
-}: Options) {
+}: TableNavigationOptions) {
   const router = useRouter()
   const [search, setSearch] = React.useState(searchQuery)
 
