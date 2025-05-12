@@ -40,7 +40,7 @@ _Verifiable Credentials, deterministic DIDs and on-chain subscription billing se
 
 3.  **Deploy smart contracts**
 
-    The Solidity layer lives in `/blockchain`. Follow the detailed instructions in `blockchain/README.html` to compile, test and deploy on Rootstock.
+    The Solidity layer lives in `/blockchain`. Follow the detailed instructions in `blockchain/README.md` to compile, test and deploy on Rootstock.
 
 4.  **Database setup (optional Docker helper)**
 
@@ -88,7 +88,7 @@ _Verifiable Credentials, deterministic DIDs and on-chain subscription billing se
 
 - **Frontend**: Next .js 14 (App Router), React Server / Client Components.
 - **Backend**: PostgreSQL via Drizzle ORM, Edge-runtime middleware, server actions.
-- **Smart Contracts**: see `blockchain/README.html`.
+- **Smart Contracts**: see `blockchain/README.md`.
 
 ---
 
